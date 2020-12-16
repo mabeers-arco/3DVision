@@ -40,19 +40,21 @@ After depth estimates for each (x,y) pair are produced by the network, we refer 
 
 The network takes about 150 epochs for the loss to asymptote, and this asymptote occurs at around 1 to 2 degrees difference between true SDA and network output. The Adam optimizer was used and training for 150 epochs takes about 20 minutes on the CPU runtime of a Google Colab with a training dataset of 1000 cuboids and a batch size of 10. As the loss has some reasonable interpretation, I have included a plot of it below. 
 
-########################## FIGURE 5 LOSS FUNCTION ###########################
-
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/network_loss_12_16.png" height="400" />
 
 
 ## Results
 There is no objectively best way to compare the shape of a reconstruction to the true shape of an object so quantification of network performance is hard. I have instead provided a number of figures that summarize performance. In particular, for a test set of 100 objects, I have provided a histogram of differences between the true angle and estimated angle for every angle in each of the 100 test shapes. I have also provided a histogram of the distances between the true vertex location and estimated vertex location. 
 
 
-######################## FIGURE 6 GOES HERE #######################################
-
 Figure 5: Summary of differences between angles and distances in test set
 
-In addition, I have provided a gif of a "good" reconstruction and a "bad" reconstruction from the same network. I also provided a detailed numerical summary of the good reconstruction. As a final summary, an unscientific visual inspection of the 100 test reconstructions yielded X "good" reconstructions and Y "bad" reconstructions. 
+In addition, I have provided a gif of a "good" reconstruction and a "bad" reconstruction from the same network. The network reconstructions are always centered around z = 0, so the actual object is shifted in z down to the origin for the reconstructions. In the section at the very bottom, a detailed numerical summary of the good reconstruction can be found. Finally, an unscientific visual inspection of the 100 test reconstructions yielded X "good" reconstructions and Y "bad" reconstructions. 
+
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/good.gif" height="400" />
+Figure 6: "Good" Reconstruction
+
+
 
 ## Future Work 
 
@@ -61,7 +63,7 @@ In addition, I have provided a gif of a "good" reconstruction and a "bad" recons
 
 ## Good Reconstruction
 
-<img src="https://github.com/mabeers-arco/3DVision/blob/main/object_list.png" height="400" />
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/num_out1.png" height="400" />
 
 
-<img src="https://github.com/mabeers-arco/3DVision/blob/main/object_list.png" height="400" />
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/num_out2.png" height="400" />
