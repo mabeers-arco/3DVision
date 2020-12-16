@@ -11,13 +11,17 @@ Three dimensional cuboid objects were generated algorithmically in the software 
 
 Figure 1: Blender UI with an example cuboid 
 
-Blender outputs a file containing the x,y,z values of the visible vertices in the camera coordinate system and a connection matrix describing which vertices share an edge, as shown in figure 2. 
+
+Blender outputs a file containing the x,y,z values of the visible vertices in the camera coordinate system and a connection matrix describing which vertices share an edge, as shown in Figure 2. A visual summary of the objects the network was trained on is provided in Figure 3. 
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/network_input.png" height="400" />
 
 Figure 2: Description of Blender output. This image taken from Mishra and Helie (2020).
 
 A visual summary of the objects the network was trained on is provided in figure 3. Objects are basically an arbitrary quadrilateral extruded in the direction normal to the plane the quadrilateral rests in. This results in four perfectly rectangular sides and two sides of any shape. 
+
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/object_list.png" height="400" />
+
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/object_list.png" height="400" />
 
@@ -39,6 +43,7 @@ The network takes about 150 epochs for the loss to asymptote, and this asymptote
 ########################## FIGURE 5 LOSS FUNCTION ###########################
 
 
+
 ## Results
 There is no objectively best way to compare the shape of a reconstruction to the true shape of an object so quantification of network performance is hard. I have instead provided a number of figures that summarize performance. In particular, for a test set of 100 objects, I have provided a histogram of differences between the true angle and estimated angle for every angle in each of the 100 test shapes. I have also provided a histogram of the distances between the true vertex location and estimated vertex location. 
 
@@ -56,73 +61,7 @@ In addition, I have provided a gif of a "good" reconstruction and a "bad" recons
 
 ## Good Reconstruction
 
-------------------------------------------------------
-ANGLES
-     Vertices  Actual Angle Estimated Angle
-1   [1, 0, 3]     90.000000         93.2955
-2   [0, 1, 2]     81.818184         83.9141
-3   [0, 1, 4]     89.999977         86.2022
-4   [2, 1, 4]     89.999962         86.1603
-5   [1, 2, 5]     90.000015         93.6117
-6   [4, 3, 0]     90.000053          85.519
-7   [4, 3, 6]     65.454559          64.023
-8   [0, 3, 6]     90.000000         87.6224
-9   [3, 4, 5]     81.818192         84.4609
-10  [3, 4, 1]     89.999985         94.9735
-11  [5, 4, 1]     89.999977         94.2701
-12  [4, 5, 6]    114.545471         113.399
-13  [4, 5, 2]     90.000046         85.9579
-14  [6, 5, 2]     89.999992         91.5402
-15  [5, 6, 3]     98.181793         97.8369
-------------------------------------------------------
-SDA + PLANARITY
-                          Estimated     Actual
-SDA                       10.311151  10.004722
-Deviation from Planarity   0.269958   0.000000
-Total Loss                10.581109  10.004722
-------------------------------------------------------
-XYZ
-          X         Y   Actual Z  Estimated Z
-0  0.981972  0.198792 -11.286680    -0.560142
-1 -0.737786  0.630276 -10.879275    -0.278223
-2 -0.927186 -0.319611 -11.359913    -0.690502
-3  1.074211 -0.265353 -10.405737     0.340475
-4 -0.645546  0.166130  -9.998331     0.581059
-5 -0.834946 -0.783756 -10.478970     0.177497
-6  0.050477 -1.289798 -10.838299    -0.154359
-------------------------------------------------------
-FACE [3, 4, 5, 6]
-        Vertices Actual Angle Estimated Angle
-0      [3, 4, 5]      81.8182         84.4609
-1      [4, 5, 6]      114.545         113.399
-2      [5, 6, 3]      98.1818         97.8369
-3      [6, 3, 4]      65.4546          64.023
-Total        NaN          360          359.72
-------------------------------------------------------
-FACE [1, 2, 5, 4]
-        Vertices Actual Angle Estimated Angle
-0      [1, 2, 5]           90         93.6117
-1      [2, 5, 4]           90         85.9579
-2      [5, 4, 1]           90         94.2701
-3      [4, 1, 2]           90         86.1603
-Total        NaN          360             360
-------------------------------------------------------
-FACE [0, 1, 4, 3]
-        Vertices Actual Angle Estimated Angle
-0      [0, 1, 4]           90         86.2022
-1      [1, 4, 3]           90         94.9735
-2      [4, 3, 0]      90.0001          85.519
-3      [3, 0, 1]           90         93.2955
-Total        NaN          360          359.99
-------------------------------------------------------
-  Verts in Edge Actual Distance Estimated Distance
-0        (0, 1)         1.81926            1.79533
-1        (0, 3)               1            1.01737
-2        (1, 2)         1.08128            1.05268
-3        (1, 4)               1           0.980972
-4        (2, 5)               1           0.988615
-5        (3, 4)         1.81926            1.78931
-6        (3, 6)          1.5115            1.53048
-7        (4, 5)         1.08128            1.04929
-8        (5, 6)         1.08128            1.07247
-------------------------------------------------------
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/object_list.png" height="400" />
+
+
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/object_list.png" height="400" />
