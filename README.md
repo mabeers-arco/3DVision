@@ -5,13 +5,19 @@ The conversion of 2D retinal input to 3D representation of the world is one of t
 
 ## Methods
 ### Data Generation
-Three dimensional cuboid objects were generated algorithmically in the software *Blender*. Each cuboid was generated at the origin of a global coordinate system, and then rotated a random amount about the x,y and z axes. A camera coordinate system was then defined. The location of each of the cuboids visible vertices was measured in the camera coordinate system by the equation <img src="https://render.githubusercontent.com/render/math?math=V = U^{-1}W">, where U is the set of orthonormal basis vectors defining the x,y,z axes of the camera coordinate system and W is the set of vectors defining the distance from camera coordinate system origin to visible vertex. The Blender UI and camera and global coordinate systems are shown in Figure 1.
+Three dimensional cuboid objects were generated algorithmically in the software Blender. Each cuboid was generated at the origin of a global coordinate system, and then rotated a random amount about the x,y and z axes. A camera coordinate system was then defined. The location of each of the cuboids visible vertices was measured in the camera coordinate system by the equation <img src="https://render.githubusercontent.com/render/math?math=V = U^{-1}W">, where U is the set of orthonormal basis vectors defining the x,y,z axes of the camera coordinate system and W is the set of vectors defining the distance from camera coordinate system origin to visible vertex. The Blender UI and camera and global coordinate systems are shown in Figure 1.
 
-<img src="https://github.com/mabeers-arco/3dReconstruction/blob/main/Blender.png" height="400" />
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/Blender.png" height="400" />
 
 Figure 1: Blender UI with an example cuboid 
 
-Blender outputs a file containing the x,y,z values of the visible vertices in the camera coordinate system and a connection matrix describing which vertices share an edge. The connection matrix, shown in Figure 2 along with a sample figure, 
+Blender outputs a file containing the x,y,z values of the visible vertices in the camera coordinate system and a connection matrix describing which vertices share an edge, as shown in Figure 2. 
+
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/network_input.png" height="400" />
+
+Figure 2: Description of Blender output. This image taken from Mishra and Helie (2020).
+
+
 
 ### Network Architecture and Training
 
