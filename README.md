@@ -11,15 +11,18 @@ Three dimensional cuboid objects were generated algorithmically in the software 
 
 Figure 1: Blender UI with an example cuboid 
 
-Blender outputs a file containing the x,y,z values of the visible vertices in the camera coordinate system and a connection matrix describing which vertices share an edge, as shown in Figure 2. 
+Blender outputs a file containing the x,y,z values of the visible vertices in the camera coordinate system and a connection matrix describing which vertices share an edge, as shown in Figure 2. A visual summary of the objects the network was trained on is provided in Figure 3. 
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/network_input.png" height="400" />
 
 Figure 2: Description of Blender output. This image taken from Mishra and Helie (2020).
 
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/object_list.png" height="400" />
 
+Figure 3: A set of randomly selected 2D images the network was trained and tested on. 
 
 ### Network Architecture and Training
+
 
 ## Results
 
