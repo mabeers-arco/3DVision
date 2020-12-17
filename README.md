@@ -44,14 +44,17 @@ The network takes about 150 epochs for the loss to asymptote, and this asymptote
 There is no objectively best way to compare the shape of a reconstruction to the true shape of an object so quantification of network performance is hard. I have  provided a number of figures that summarize performance. In particular, for a test set of 100 objects, I have provided a histogram of differences between the true angle and estimated angle for every angle in each of the 100 test shapes. I have also provided a histogram of the difference between actual edge lengths and estimated edge lengths. 
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/deviations.png" height="400" />
+
 **Figure 5:** Summary of angle estimation errors and edge length estimation errors in test set
 
 In addition, I have provided gifs of a "good" reconstruction and a "bad" reconstruction from the same network. The network reconstructions are always centered around z = 0, so the actual object is shifted to the origin for the reconstructions. In the section at the very bottom, a detailed numerical summary of the good and bad reconstructions can be found. 
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/good.gif" height="600" />
+
 **Figure 6:** "Good" Reconstruction
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/bad.gif" height="600" />
+
 **Figure 7:** "Bad" Reconstruction
 
 
