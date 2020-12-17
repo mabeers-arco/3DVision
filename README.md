@@ -1,7 +1,7 @@
 # Recovery Of An Object's 3D Geometry From a 2D Projection
 
 ## Introduction
-The conversion of 2D retinal input to 3D representation of the world is one of the most important capabilities of the human visual system. This conversion is both quick and accurate, and many behavioral experiments have been performed to identify the limits of human performance(e.g. 1,2). These studies tend to focus on monocular or binocular reconstruction. Binocular reconstruction consistently produces better 3D shape inference (Pizlo) than monocular reconstruction, but accurate monocular 3D shape perception is still possible. That monocular reconstruction is possible at all is notable in that there are an infinite number of 3D scenes that could produce any given 2D retinal image. Therefore, the process of inverting the projection of 3D scene onto the 2D retina is ill-posed and difficult. Despite the difficulty, the brain achieves some level of monocular 3D reconstruction accuracy by applying constraints that reflect regularities in our physical world (Pizlo). For instance, many objects in the natural world are symmetrical, and so the brain may select the 3D object consistent with the 2D input that is maximally symmetrical. In computer vision, implementation of these constraints is typically done using an optimization approach that can be accurate, but is slow and biologically implausible. Mishra & Helie (2020) began to address the speed and biological plausibility issues by using a deep convolutional neural network trained to monocularly reconstruct simple polyhedral objects that had minimally varying 3D angles. The constraint of minimum standard deviation of 3D angles (MSDA) was shown by Marill (1989) to generate accurate 3D reconstructions for some polyhedral shapes. Leclerc and Fischler (1992) demonstrated that MSDA in conjunction with a constraint requiring planar faces produced even better 3D reconstructions. This project builds on Mishra & Helie’s approach by changing the underlying neural network architecture, training the network on a slightly larger class of objects, and adding a planarity constraint as defined by Leclerc and Fischler. 
+The conversion of 2D retinal input to 3D representation of the world is one of the most important capabilities of the human visual system. This conversion is both quick and accurate, and many behavioral experiments have been performed to identify the limits of human performance(e.g. Rock & DiVita, 1987; ). These studies tend to focus on monocular or binocular reconstruction. Binocular reconstruction consistently produces better 3D shape inference (Li et al. 2011) than monocular reconstruction, but accurate monocular 3D shape perception is still possible. That monocular reconstruction is possible at all is notable in that there are an infinite number of 3D scenes that could produce any given 2D retinal image. Therefore, the process of inverting the projection of 3D scene onto the 2D retina is ill-posed and difficult. Despite the difficulty, the brain achieves some level of monocular 3D reconstruction accuracy by applying constraints that reflect regularities in our physical world (Pizlo & Stevenson, 1999). For instance, many objects in the natural world are symmetrical, and so the brain may select the 3D object consistent with the 2D input that is maximally symmetrical. In computer vision, implementation of these constraints is typically done using an optimization approach that can be accurate, but is slow and biologically implausible. Mishra & Helie (2020) began to address the speed and biological plausibility issues by using a deep convolutional neural network trained to monocularly reconstruct simple polyhedral objects that had minimally varying 3D angles. The constraint of minimum standard deviation of 3D angles (MSDA) was shown by Marill (1989) to generate accurate 3D reconstructions for some polyhedral shapes. Leclerc and Fischler (1992) demonstrated that MSDA in conjunction with a constraint requiring planar faces produced even better 3D reconstructions. This project builds on Mishra & Helie’s approach by changing the underlying neural network architecture, training the network on a slightly larger class of objects, and adding a planarity constraint as defined by Leclerc and Fischler. 
 
 ## Methods
 ### Data Generation
@@ -49,11 +49,11 @@ There is no objectively best way to compare the shape of a reconstruction to the
 
 In addition, an example of a "good" reconstruction and a "bad" reconstruction from the same network are provided in figures six and seven. These examples were selected by hand and are intended to provide an intuition for the spectrum of reconstructions this algorithm may produce. The network reconstructions are always centered around z = 0, so the actual object is shifted to the origin in figures six and seven for easier comparison. In the section at the very bottom, a detailed numerical summary of the good and bad reconstructions can be found. 
 
-<img src="https://github.com/mabeers-arco/3DVision/blob/main/good.gif" height="600" />
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/good_ortho.gif" height="600" />
 
 **Figure 6:** Orthographic Projection of A "Good" Reconstruction
 
-<img src="https://github.com/mabeers-arco/3DVision/blob/main/bad.gif" height="600" />
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/bad_ortho.gif" height="600" />
 
 **Figure 7:** Orthographic Projection of A "Bad" Reconstruction
 
@@ -62,10 +62,21 @@ In addition, an example of a "good" reconstruction and a "bad" reconstruction fr
 The network was able to, in some cases, achieve 3D reconstructions that were visually similar to the actual 3D shape.  These successes were achieved despite the fact that the network employed was relatively small. 
 
 ## References
+Rock, I., & DiVita,J. (1987). A case of viewer-centered object perception. Cognitive Psychology, 19,280-293.
+
+Li, Y., Sawada, T., Shi, Y., Kwon, T., & Pizlo, Z. (2011). A Bayesian model of binocular perception of 3D mirror symmetrical polyhedra. Journal of Vision, 11(4), 11–11. https://doi.org/10.1167/11.4.11
+
+Pizlo, Z., & Stevenson, A. K. (1999). Shape constancy from novel views. Perception and Psychophysics, 61(7), 1299–1307. https://doi.org/10.3758/BF03206181
+
+Marill, T. (1991). Emulating the human interpretation of line-drawings as three-dimensional objects. International Journal of Computer Vision, 6(2), 147–161. https://doi.org/10.1007/BF00128154
+
+Leclerc, Y. G., & Fischler, M. A. (1992). An optimization-based approach to the interpretation of single line drawings as 3D wire frames. International Journal of Computer Vision, 9(2), 113–136. https://doi.org/10.1007/BF00129683
+
+Mishra, P., & Hélie, S. (2020). 3D shape estimation in a constraint optimization neural network. Vision Research, 177, 118–129. https://doi.org/10.1016/j.visres.2020.08.010
+
+
 
 ## Numerical Summary of "Good" Reconstruction
-
-## Numerical Summary of "Bad" Reconstruction
 
  ANGLES
 |    | Vertices   |   Actual Angle |   Estimated Angle |
@@ -143,3 +154,82 @@ The network was able to, in some cases, achieve 3D reconstructions that were vis
 |  6 | (3, 6)          |           1.64597 |             1.56962  |
 |  7 | (4, 5)          |           1.32625 |             1.3725   |
 |  8 | (5, 6)          |           1.32625 |             1.34411  |
+
+## Numerical Summary of "Bad" Reconstruction
+
+ ANGLES
+|    | Vertices   |   Actual Angle |   Estimated Angle |
+|---:|:-----------|---------------:|------------------:|
+|  1 | [1, 0, 3]  |        83.0769 |           77.2399 |
+|  2 | [1, 0, 4]  |        90      |           91.8834 |
+|  3 | [3, 0, 4]  |        90      |           95.6095 |
+|  4 | [0, 1, 2]  |       110.769  |           91.1015 |
+|  5 | [0, 1, 5]  |        90      |           86.6993 |
+|  6 | [2, 1, 5]  |        90      |           83.2484 |
+|  7 | [1, 2, 3]  |        96.9231 |          104.665  |
+|  8 | [1, 2, 6]  |        90      |           95.3371 |
+|  9 | [3, 2, 6]  |        90      |          100.014  |
+| 10 | [2, 3, 0]  |        69.2307 |           84.5634 |
+| 11 | [5, 4, 0]  |        90      |           88.5687 |
+| 12 | [4, 5, 6]  |       110.769  |           93.7145 |
+| 13 | [4, 5, 1]  |        90      |           92.8329 |
+| 14 | [6, 5, 1]  |        90      |           95.9965 |
+| 15 | [5, 6, 2]  |        90      |           85.3602 |
+
+ SDA + PLANARITY
+|                          |   Estimated |   Actual |
+|:-------------------------|------------:|---------:|
+| SDA                      |     7.02745 |  9.86039 |
+| Deviation from Planarity |     2.35614 |  0       |
+| Total Loss               |    42.1053  |  9.86039 |
+
+ XYZ
+|    |         X |         Y |   Actual Z |   Estimated Z |
+|---:|----------:|----------:|-----------:|--------------:|
+|  0 |  0.841719 |  0.586704 |   -11.2283 |     0.166276  |
+|  1 |  0.268573 | -0.205915 |   -10.3327 |    -0.915897  |
+|  2 | -0.527554 | -0.554268 |   -10.6624 |    -0.267202  |
+|  3 | -0.473085 |  0.183514 |   -12.1327 |     0.716905  |
+|  4 |  1.33915  | -0.195908 |   -11.6026 |     0.520003  |
+|  5 |  0.766008 | -0.988528 |   -10.7069 |    -0.528132  |
+|  6 | -0.030119 | -1.33688  |   -11.0366 |     0.0768143 |
+
+ [0, 3, 2, 1]
+|       | Vertices   |   Actual Angle |   Estimated Angle |
+|:------|:-----------|---------------:|------------------:|
+| 0     | [0, 3, 2]  |        69.2307 |           84.5634 |
+| 1     | [3, 2, 1]  |        96.9231 |          104.665  |
+| 2     | [2, 1, 0]  |       110.769  |           91.1015 |
+| 3     | [1, 0, 3]  |        83.0769 |           77.2399 |
+| Total | nan        |       360      |          357.57   |
+
+ [1, 2, 6, 5]
+|       | Vertices   |   Actual Angle |   Estimated Angle |
+|:------|:-----------|---------------:|------------------:|
+| 0     | [1, 2, 6]  |             90 |           95.3371 |
+| 1     | [2, 6, 5]  |             90 |           85.3602 |
+| 2     | [6, 5, 1]  |             90 |           95.9965 |
+| 3     | [5, 1, 2]  |             90 |           83.2484 |
+| Total | nan        |            360 |          359.942  |
+
+ [0, 1, 5, 4]
+|       | Vertices   |   Actual Angle |   Estimated Angle |
+|:------|:-----------|---------------:|------------------:|
+| 0     | [0, 1, 5]  |             90 |           86.6993 |
+| 1     | [1, 5, 4]  |             90 |           92.8329 |
+| 2     | [5, 4, 0]  |             90 |           88.5687 |
+| 3     | [4, 0, 1]  |             90 |           91.8834 |
+| Total | nan        |            360 |          359.984  |
+
+ EDGE LENGTHS
+|    | Verts in Edge   |   Actual Distance |   Estimated Distance |
+|---:|:----------------|------------------:|---------------------:|
+|  0 | (0, 1)          |          1.32625  |             1.45871  |
+|  1 | (0, 3)          |          1.64597  |             1.48137  |
+|  2 | (0, 4)          |          1        |             0.992495 |
+|  3 | (1, 2)          |          0.929446 |             1.08442  |
+|  4 | (1, 5)          |          1        |             1.00513  |
+|  5 | (2, 3)          |          1.64597  |             1.23116  |
+|  6 | (2, 6)          |          1        |             0.989076 |
+|  7 | (4, 5)          |          1.32625  |             1.43364  |
+|  8 | (5, 6)          |          0.929447 |             1.05883  |
