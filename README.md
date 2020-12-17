@@ -35,35 +35,34 @@ The LeNet architecture mirrored in this work includes several fully connected la
 
 After depth estimates for each (x,y) pair are produced by the network, we refer to the connection matrix and compute the appropriate edges. In other words, if vertex 0 is connected to vertex 1, we take the difference of the (x,y,z) coordinates of vertex 0 and vertex 1 to get E01. Once all edges that exist in the connection matrix are computed, the angles between connected edges are computed using the formula <img src="https://render.githubusercontent.com/render/math?math=a \cdot b = \Vert a\Vert \Vert b\Vert cos(\theta)">. Once all the relevant 3D angles are computed, we take the standard devation. This quantity becomes one part of the forward function output. The second part of the output corresponds to a planarity constraint. A planar polygon with n sides has sum of internal angles equal to <img src="https://render.githubusercontent.com/render/math?math=(n - 2)\pi">. If the polygon is non-planar the sum of its internal angles will be different. For each visible face of our object, we compute the absolute value of the difference between the sum of internal angles and <img src="https://render.githubusercontent.com/render/math?math=(n - 2)\pi">. The sum of these differences, added to the standard deviation of 3D angles is the forward function's output during training. During training, the loss is defined as the absolute value of the difference between the network output and the true standard deviation of the same angles computed within the network. The true object has perfectly planar sides, so comparing network output to true SDA is identical to comparing network output to true SDA plus a deviation from planarity penalty. 
 
-The network takes about 150 epochs for the loss to asymptote, and this asymptote occurs at around 1 to 2 degrees difference between true SDA and network output. The Adam optimizer was used and training for 150 epochs takes about 20 minutes on the CPU runtime of a Google Colab with a training dataset of 1000 cuboids and a batch size of 10. As the loss has some reasonable interpretation, I have included a plot of it below. 
+The network takes about 150 epochs for the loss to asymptote, and this asymptote occurs at around 1 to 2 degrees difference between true SDA and network output. The Adam optimizer was used and training for 150 epochs takes about 20 minutes on the CPU runtime of a Google Colab with a training dataset of 1000 cuboids and a batch size of 10. As the loss has some reasonable interpretation, a plot of it as been included below. 
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/network_loss_12_16.png" height="400" />
 
 
 ## Results
-There is no objectively best way to compare the shape of a reconstruction to the true shape of an object so quantification of network performance is hard. I have  provided a number of figures that summarize performance. In particular, for a test set of 100 objects, I have provided a histogram of differences between the true angle and estimated angle for every angle in each of the 100 test shapes. I have also provided a histogram of the difference between actual edge lengths and estimated edge lengths. 
+There is no objectively best way to compare the shape of a reconstruction to the true shape of an object so quantification of network performance is hard. However, a number of figures that summarize performance have been provided. In particular, in figure 5 there is a histogram of differences between the true angle and estimated angle for every angle in each of 100 test shapes. Figure 5 also contains a histogram of the differences between actual edge lengths and estimated edge lengths. 
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/deviations.png" height="400" />
 
 **Figure 5:** Summary of angle estimation errors and edge length estimation errors in test set
 
-In addition, I have provided gifs of a "good" reconstruction and a "bad" reconstruction from the same network. The network reconstructions are always centered around z = 0, so the actual object is shifted to the origin for the reconstructions. In the section at the very bottom, a detailed numerical summary of the good and bad reconstructions can be found. 
+In addition, an example of a "good" reconstruction and a "bad" reconstruction from the same network are provided in figures six and seven. These examples were selected by hand and are intended to provide an intuition for the spectrum of reconstructions this algorithm may produce. The network reconstructions are always centered around z = 0, so the actual object is shifted to the origin in figures six and seven for easier comparison. In the section at the very bottom, a detailed numerical summary of the good and bad reconstructions can be found. 
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/good.gif" height="600" />
 
-**Figure 6:** "Good" Reconstruction
+**Figure 6:** Orthographic Projection of A "Good" Reconstruction
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/bad.gif" height="600" />
 
-**Figure 7:** "Bad" Reconstruction
+**Figure 7:** Orthographic Projection of A "Bad" Reconstruction
 
 
-## Future Work 
-
+## Discussion and Future Work 
+The network was able to, in some cases, achieve 3D reconstructions that were visually similar to the actual 3D shape.  These successes were achieved despite the fact that the network employed was relatively small. 
 
 ## References
 
 ## Numerical Summaries of "Good" and "Bad" Reconstructions
 
-<img src="https://github.com/mabeers-arco/3DVision/blob/main/num_sum.png" height="800" />
-
+|  Verts in Edge   |   Actual Distance |   Estimated Distance |\n| :----------------|------------------:|---------------------:|\n|  (0, 1)          |           1.32625 |             1.40897  |\n|  (0, 4)          |           1       |             0.991127 |\n|  (1, 2)          |           1.32625 |             1.33911  |\n|  (1, 5)          |           1       |             0.965643 |\n|  (2, 6)          |           1       |             0.960044 |\n|  (3, 4)          |           1.32624 |             1.25267  |\n|  (3, 6)          |           1.64597 |             1.56962  |\n|  (4, 5)          |           1.32625 |             1.3725   |\n|  (5, 6)          |           1.32625 |             1.34411  |
