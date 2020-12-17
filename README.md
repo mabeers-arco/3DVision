@@ -51,7 +51,7 @@ In addition, I have provided a gif of a "good" reconstruction and a "bad" recons
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/good.gif" height="600" />
 Figure 6: "Good" Reconstruction
 
-<img src="https://github.com/mabeers-arco/3DVision/blob/main/bad.gif" height="400" />
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/bad.gif" height="600" />
 Figure 7: "Bad" Reconstruction
 
 
@@ -60,9 +60,7 @@ Figure 7: "Bad" Reconstruction
 
 ## References
 
-## Numerical Summary of Good Reconstruction
+## Numerical Summaries of "Good" and "Bad" Reconstructions
 
-<img src="https://github.com/mabeers-arco/3DVision/blob/main/num_out1.png" height="400" />
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/num_sum.png" height="800" />
 
-
-<img src="https://github.com/mabeers-arco/3DVision/blob/main/num_out2.png" height="400" />
