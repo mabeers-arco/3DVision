@@ -9,20 +9,20 @@ Three dimensional cuboid objects were generated algorithmically in the software 
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/Blender.png" height="400" />
 
-***Figure 1:*** Blender UI with an example cuboid 
+**Figure 1:** Blender UI with an example cuboid 
 
 
 Blender outputs a file containing the x,y,z values of the visible vertices in the camera coordinate system and a connection matrix describing which vertices share an edge, as shown in Figure 2.
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/network_input.png" height="400" />
 
-***Figure 2:*** Description of Blender output. This image taken from Mishra and Helie (2020).
+**Figure 2:** Description of Blender output. This image taken from Mishra and Helie (2020).
 
 A random sample of the objects the network was trained on is provided in figure 3. Each object can be constructed by extruding an arbitrary convex quadrilateral in the direction normal to the plane the quadrilateral rests in. This results in four perfectly rectangular sides and two sides that are some convex quadrilateral. 
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/object_list.png" height="400" />
 
-***Figure 3:*** A set of randomly selected 2D images the network was trained and tested on. 
+**Figure 3:** A set of randomly selected 2D images the network was trained and tested on. 
 
 ### Network Architecture and Training
 The neural network architecture used in this work is very similar to LeNet. The network takes in three channels of data. The first channel describes the x coordinates of the object vertices in the camera coordinate system. The second channel describes the y coordinates of the object vertices. The third channel describes the connection matrix as shown in figure 2. The output of the final layer of the network is an estimate of the depth values for each (x,y) pair. 
@@ -44,15 +44,15 @@ The network takes about 150 epochs for the loss to asymptote, and this asymptote
 There is no objectively best way to compare the shape of a reconstruction to the true shape of an object so quantification of network performance is hard. I have  provided a number of figures that summarize performance. In particular, for a test set of 100 objects, I have provided a histogram of differences between the true angle and estimated angle for every angle in each of the 100 test shapes. I have also provided a histogram of the difference between actual edge lengths and estimated edge lengths. 
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/deviations.png" height="400" />
-***Figure 5:*** Summary of angle estimation errors and edge length estimation errors in test set
+**Figure 5:** Summary of angle estimation errors and edge length estimation errors in test set
 
 In addition, I have provided gifs of a "good" reconstruction and a "bad" reconstruction from the same network. The network reconstructions are always centered around z = 0, so the actual object is shifted to the origin for the reconstructions. In the section at the very bottom, a detailed numerical summary of the good and bad reconstructions can be found. 
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/good.gif" height="600" />
-***Figure 6:*** "Good" Reconstruction
+**Figure 6:** "Good" Reconstruction
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/bad.gif" height="600" />
-***Figure 7:*** "Bad" Reconstruction
+**Figure 7:** "Bad" Reconstruction
 
 
 ## Future Work 
