@@ -22,9 +22,6 @@ A visual summary of the objects the network was trained on is provided in figure
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/object_list.png" height="400" />
 
-
-<img src="https://github.com/mabeers-arco/3DVision/blob/main/object_list.png" height="400" />
-
 Figure 3: A set of randomly selected 2D images the network was trained and tested on. 
 
 ### Network Architecture and Training
@@ -51,9 +48,11 @@ Figure 5: Summary of differences between angles and distances in test set
 
 In addition, I have provided a gif of a "good" reconstruction and a "bad" reconstruction from the same network. The network reconstructions are always centered around z = 0, so the actual object is shifted in z down to the origin for the reconstructions. In the section at the very bottom, a detailed numerical summary of the good reconstruction can be found. Finally, an unscientific visual inspection of the 100 test reconstructions yielded X "good" reconstructions and Y "bad" reconstructions. 
 
-<img src="https://github.com/mabeers-arco/3DVision/blob/main/good.gif" height="400" />
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/good.gif" height="600" />
 Figure 6: "Good" Reconstruction
 
+<img src="https://github.com/mabeers-arco/3DVision/blob/main/bad.gif" height="400" />
+Figure 7: "Bad" Reconstruction
 
 
 ## Future Work 
@@ -61,7 +60,7 @@ Figure 6: "Good" Reconstruction
 
 ## References
 
-## Good Reconstruction
+## Numerical Summary of Good Reconstruction
 
 <img src="https://github.com/mabeers-arco/3DVision/blob/main/num_out1.png" height="400" />
 
